@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Chat</title>
+  <style>
+    /* Basic styling for the chat messages */
+    .chat-message {
+      margin: 10px;
+      padding: 5px 10px;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div id="chat-messages"></div>
+  <input type="text" id="name-input" placeholder="Your Name">
+  <input type="text" id="message-input" placeholder="Type your message...">
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    // Function to send a message
+    function sendMessage() {
+      const nameInput = document.getElementById('name-input');
+      const messageInput = document.getElementById('message-input');
+      const name = nameInput.value.trim();
+      const message = messageInput.value.trim();
+      
+      if (name && message) {
+        displayMessage(name, message);
+        messageInput.value = '';
+      } else {
+        alert('Please enter your name and message.');
+      }
+    }
+
+    // Function to display a message in the chat
+    function displayMessage(name, message) {
+      const chatMessages = document.getElementById('chat-messages');
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('chat-message');
+      messageElement.textContent = `${name}: ${message}`;
+      chatMessages.appendChild(messageElement);
+    }
+  </script>
+</body>
+</html>

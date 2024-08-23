@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flappy Bird</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+            margin: auto;
+            background-color: #add8e6;
+        }
+        .message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 24px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <div id="messageContainer" class="message" style="display: none;"></div>
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let bird = {
+            x: 50,
+            y: canvas.height / 2,
+            radius: 20,
+            gravity: 0.2,
+            jumpStrength: -5,
+            velocity: 0
+        };
+
+        let pipes = [];
+        let coins = [];
+        let score = 0;
+        let lastPipeTime = 0;
+        let pipeInterval = 1500; // milliseconds between pipe generations
+        let minPipeDistance = canvas.width / 2; // minimum distance between pipes
+        let maxPipeDistance = canvas.width / 2 + 100; // maximum distance between pipes
+
+        function drawBird() {
+            ctx.beginPath();
+            ctx.arc(bird.x, bird.y, bird.radius, 0, Math.PI * 2);
+            ctx.fillStyle = "#FF5733";
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function drawPipe(x, y, height) {
+            ctx.fillStyle = "#008000";
+            ctx.fillRect(x, y, 50, height);
+        }
+
+        function drawCoin(x, y, size) {
+            ctx.fillStyle = "#FFD700";
+            ctx.beginPath();
+            ctx.arc(x, y, size, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function drawScore() {
+            ctx.font = "20px Arial";
+            ctx.fillStyle = "#000";
+            ctx.fillText("Score: " + score, 10, 30);
+            if (score >= 500) {
+                gameOver();
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            bird.velocity += bird.gravity;
+            bird.y += bird.velocity;
+
+            if (bird.y + bird.radius > canvas.height || bird.y - bird.radius < 0) {
+                gameOver();
+            }
+
+            drawBird();
+
+            if (Date.now() - lastPipeTime > pipeInterval) {
+                generatePipes();
+                lastPipeTime = Date.now();
+            }
+
+            pipes.forEach(pipe => {
+                pipe.x -= 2;
+                drawPipe(pipe.x, 0, pipe.topHeight);
+                drawPipe(pipe.x, pipe.bottomY, pipe.bottomHeight);
+            });
+
+            coins.forEach((coin) => {
+                coin.x -= 2; // Update coin's X position
+                drawCoin(coin.x, coin.y, coin.size);
+            });
+
+            pipes.forEach(pipe => {
+                if (bird.x + bird.radius > pipe.x && bird.x - bird.radius < pipe.x + 50) {
+                    if (bird.y - bird.radius < pipe.topHeight || bird.y + bird.radius > pipe.bottomY) {
+                        gameOver();
+                    }
+                }
+
+                if (pipe.x + 50 === bird.x) {
+                    score++;
+                }
+            });
+
+            coins.forEach((coin, index) => {
+                if (
+                    bird.x + bird.radius > coin.x - coin.size &&
+                    bird.x - bird.radius < coin.x + coin.size &&
+                    bird.y + bird.radius > coin.y - coin.size &&
+                    bird.y - bird.radius < coin.y + coin.size
+                ) {
+                    score += 15;
+                    coins.splice(index, 1);
+                }
+            });
+
+            drawScore();
+
+            requestAnimationFrame(draw);
+        }
+
+        
+        function generatePipes() {
+            let topHeight = Math.random() * (canvas.height - 300) + 50; // Decrease the range of random height for the upper pillar
+            let bottomHeight = canvas.height - topHeight - Math.random() * 150 - 100; // Decrease the range of random height for the lower pillar
+            let bottomY = topHeight + 250 + Math.random() * 50; // Adjust the distance between the upper and lower pillars
+
+            pipes.push({ x: canvas.width, topHeight: topHeight, bottomY: bottomY, bottomHeight: bottomHeight });
+
+            // Generate coins between pillars
+            let coinY = topHeight + (bottomY - topHeight) / 2; // Set coin Y position between the upper and lower pillars
+            let coinX = canvas.width;
+            let coinSize = 15; // Increase coin size to 15 (you can adjust this value as needed)
+            coins.push({ x: coinX, y: coinY, size: coinSize });
+        }
+
+       
+       
+        function gameOver() {
+            if (score >= 500) {
+                document.getElementById("messageContainer").innerText = "You will destroy your stone successfully.";
+                document.getElementById("messageContainer").style.display = "block";
+                alert("You will destroy your stone successfully.");
+            } else {
+                alert("Game Over! Your score is: " + score);
+            }
+            restartGame();
+        }
+
+        function restartGame() {
+            bird.y = canvas.height / 2;
+            bird.velocity = 0;
+            pipes = [];
+            coins = [];
+            score = 0;
+        }
+
+        canvas.addEventListener("click", () => {
+            bird.velocity = bird.jumpStrength;
+        });
+
+        draw();
+    </script>
+</body>
+</html>

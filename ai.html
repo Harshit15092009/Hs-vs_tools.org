@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 0;
+        }
+        #searchForm {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        #searchInput {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+        }
+        #searchButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            outline: none;
+        }
+        .tool {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 4px solid #4CAF50;
+            border-radius: 5px;
+        }
+        .tool a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .tool p {
+            margin: 0;
+            color: #666;
+        }
+        .no-results {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Tools Catalog</h1>
+
+      
+      <button id=“button2” onclick="index()">
+back_button
+</button>
+
+      
+      
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Search by tool name or description...">
+            <button type="submit" id="searchButton">Search</button>
+        </form>
+
+        <div id="toolsList">
+            <!-- Tool entries will be dynamically added here -->
+        </div>
+    </div>
+
+  <caption> @  more ai added as soon.. comingsoon!!!</caption>
+  
+  
+    <script>
+  
+  function index() {
+      
+      window.location.href = "index.html";
+    }
+  
+  
+        const tools = [
+            { name: "chat-gpt", description: "ChatGPT is an advanced AI created by OpenAI. It's great at understanding and generating human-like text. It can help with answering questions, creating content, explaining things, and more.", link: "https://www.openai.com/chatgpt" },
+            { name: "ai prompt genrator  {feedough}", description: " ai prompt genrator by feedough.it gentate detaled and accurate discription for ai tools .", link: "https://www.feedough.com/chatgpt-prompt-generator/" },
+            { name: "covers ai", description: "make voice of any celibrity . convert any audio file any persons voice", link: "https://covers.ai/ai-song-generator" }
+            // Add more tools as needed
+        ];
+
+        const toolsList = document.getElementById('toolsList');
+        const searchForm = document.getElementById('searchForm');
+        const searchInput = document.getElementById('searchInput');
+
+        function displayTools(query) {
+            toolsList.innerHTML = '';
+
+            let resultsFound = false;
+
+            tools.forEach(tool => {
+                if (tool.name.toLowerCase().includes(query.toLowerCase()) || tool.description.toLowerCase().includes(query.toLowerCase())) {
+                    const toolDiv = document.createElement('div');
+                    toolDiv.classList.add('tool');
+
+                    const toolLink = document.createElement('a');
+                    toolLink.setAttribute('href', tool.link);
+                    toolLink.textContent = tool.name;
+                    toolLink.setAttribute('target', '_blank');
+                    toolDiv.appendChild(toolLink);
+
+                    const descriptionPara = document.createElement('p');
+                    descriptionPara.textContent = tool.description;
+                    toolDiv.appendChild(descriptionPara);
+
+                    toolsList.appendChild(toolDiv);
+                    resultsFound = true;
+                }
+            });
+
+            if (!resultsFound) {
+                const noResultsPara = document.createElement('p');
+                noResultsPara.classList.add('no-results');
+                noResultsPara.textContent = 'No tools found matching your search.';
+                toolsList.appendChild(noResultsPara);
+            }
+        }
+
+        searchForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const searchQuery = searchInput.value.trim();
+            displayTools(searchQuery);
+        });
+
+        displayTools('');
+    </script>
+</body>
+</html>

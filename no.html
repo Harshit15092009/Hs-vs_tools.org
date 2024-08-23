@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Multiplier</title>
+    <style>
+        #word-input {
+            margin-bottom: 10px;
+        }
+        #copy-button {
+            margin-bottom: 10px;
+        }
+        #output {
+            width: 90%;
+            height: 200px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="word-input" placeholder="Enter a word">
+    <button id="copy-button">Copy to Clipboard</button>
+    <div id="output"></div>
+
+    <script>
+        document.getElementById('copy-button').addEventListener('click', function() {
+            copyToClipboard(document.getElementById('output').innerText);
+        });
+
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Copied to clipboard!');
+        }
+
+        document.getElementById('word-input').addEventListener('input', function() {
+            const word = this.value.trim();
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerText = ''; // Clear previous content
+            
+            if (word !== '') {
+                let multipliedWord = '';
+                for (let i = 0; i < 1000; i++) {
+                    multipliedWord += word + ' ';
+                }
+                outputDiv.innerText = multipliedWord;
+            }
+        });
+  
+  
+  function hm() {
+      
+      window.location.href = "index.html";
+    }
+  
+  
+    </script>
+  
+  <body style="background-color:#FF004C;"></body>
+
+  <button id=“button1” onclick="hm()">
+back_button
+</button>
+
+
+  
+  
+  
+  
+</body>
+</html>

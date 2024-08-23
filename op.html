@@ -79,9 +79,6 @@
             ctx.font = "20px Arial";
             ctx.fillStyle = "#000";
             ctx.fillText("Score: " + score, 10, 30);
-            if (score >= 500) {
-                gameOver();
-            }
         }
 
         function draw() {
@@ -141,7 +138,6 @@
             requestAnimationFrame(draw);
         }
 
-        
         function generatePipes() {
             let topHeight = Math.random() * (canvas.height - 300) + 50; // Decrease the range of random height for the upper pillar
             let bottomHeight = canvas.height - topHeight - Math.random() * 150 - 100; // Decrease the range of random height for the lower pillar
@@ -156,16 +152,8 @@
             coins.push({ x: coinX, y: coinY, size: coinSize });
         }
 
-       
-       
         function gameOver() {
-            if (score >= 500) {
-                document.getElementById("messageContainer").innerText = "You will destroy your stone successfully.";
-                document.getElementById("messageContainer").style.display = "block";
-                alert("You will destroy your stone successfully.");
-            } else {
-                alert("Game Over! Your score is: " + score);
-            }
+            alert("Game Over! Your score is: " + score);
             restartGame();
         }
 
@@ -173,7 +161,7 @@
             bird.y = canvas.height / 2;
             bird.velocity = 0;
             pipes = [];
-            coins = [];
+           coins = [];
             score = 0;
         }
 

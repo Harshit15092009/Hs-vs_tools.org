@@ -1,118 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>html-codes</title>
-<style>   body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin: 20px;
-    }
-    
-    button {
-        padding: 10px 5px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-    
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML-CODES</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #FF004C;
+        }
+
+        h3, h6 {
+            margin: 15px 0;
+        }
+
+        button {
+            padding: 15px 20px;
+            font-size: 18px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #FF004C;
+            color: white;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background-color: #e60042;
+        }
+
+        mark {
+            background-color: transparent;
+            font-weight: bold;
+            color: #FF004C;
+            font-size: 1.2rem;
+        }
+    </style>
 </head>
 <body>
 
+    <h2>HTML-CODES BY HARSHIT</h2>
 
+    <h3><mark>Basic Tools</mark></h3>
 
-<center><h2>HTML-CODES  BY HARSHIT</h2></center>
+    <button id="button1" onclick="ic()">Interest Calculator</button>
+    <button id="button2" onclick="url()">www-url (local-beta)</button>
+    <button id="button3" onclick="no()">World Multiplier (1000x)</button>
+    <button id="button5" onclick="AI()">@i Tools List-AI</button>
 
-  <h3><mark>basic-tools</mark></h3>
-  
-<button id=“button1” onclick="ic()">
-intrest-calculator
-</button>
+    <h3><mark>Web Games</mark></h3>
 
-<h6></h6>
+    <button id="button4" onclick="op()">Flappy Stone 'Beta'</button>
 
+    <h3><mark>AI Tools (API)</mark></h3>
 
-<button id=“button2” onclick="url()">
-www-url (local-beta)
-</button>
+    <button id="button6" onclick="img()">AI Image Generator (API-DALLE)</button>
 
-<h6></h6>
-
-<button id=“button3” onclick="no()">
-world-multiplyer (1000x)
-</button>
-
-  <h6></h6>
-     
-<button id=“button5” onclick="AI()">
- @i  tools list-AI
-</button>
-
-  
-  <h6></h6>
- 
-  <mark>web-games </mark>
-  
-  
-  <h6></h6>
-  
-  <button id=“button4” onclick="op()">
-flappy stone 'beta'
-</button>
-  
-  
-  <h6></h6>
-  
-  <mark>AI-TOOLS (API)</mark>
-  
-  <h6></h6>
-  
-  <button id=“button6” onclick="img()">
-   AI Image genrator (API-DELLe)
-</button>
-  
-  
-  
-  
-  <script>
-    function ic() {
-      
-      window.location.href = "ic_page.html";
-    }
-    
-      
-    function url() {
-      
-      window.location.href = "url_page.html";
-    }
-  
-    
-    function no() {
-      
-      window.location.href = "no.html";
-    }
-  
-    function AI() {
-      
-      window.location.href = "ai.html";
-    }
-    
-    
-  function op() {
-      
-      window.location.href = "op.html";
-    }
-    
-  
-  </script>
-
-
-<body style="background-color:#FF004C;"></body>
-
-
-
-
-
-
+    <script>
+        function ic() { window.location.href = "ic_page.html"; }
+        function url() { window.location.href = "url_page.html"; }
+        function no() { window.location.href = "no.html"; }
+        function AI() { window.location.href = "ai.html"; }
+        function op() { window.location.href = "op.html"; }
+        function img() { window.location.href = "img.html"; }
+    </script>
 
 </body>
-</html>
+      </html>

@@ -4,48 +4,78 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Useful Websites</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #FAFAFA;
+        color: #333;
+        text-align: center;
+        padding: 20px;
+    }
+    h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        color: #007ACC;
+    }
+    .button {
+        display: inline-block;
+        margin: 10px;
+        padding: 15px 30px;
+        font-size: 18px;
+        background-color: #007ACC;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .button:hover {
+        background-color: #005999;
+    }
+    #back_button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #FF004C;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    #back_button:hover {
+        background-color: #CC003F;
+    }
+</style>
 </head>
 <body>
-  
-  <button id=“button2” onclick="hm()">
-back_button
-</button>
 
-
-  
 <h1>Useful Websites</h1>
-<button id="button1" onclick="window.location.href='https://www.google.com'">Google</button><br><br>
-<button id="button2" onclick="window.location.href='https://www.youtube.com'">YouTube</button><br><br>
-<button id="button3" onclick="window.location.href='https://www.facebook.com'">Facebook</button><br><br>
-<button id="button4" onclick="window.location.href='https://twitter.com'">Twitter</button><br><br>
-<button id="button5" onclick="window.location.href='https://www.amazon.com'">Amazon</button><br><br>
-<button id="button6" onclick="window.location.href='https://www.wikipedia.org'">Wikipedia</button><br><br>
-<button id="button7" onclick="window.location.href='https://www.netflix.com'">Netflix</button><br><br>
-<button id="button8" onclick="window.location.href='https://www.instagram.com'">Instagram</button><br><br>
-<button id="button9" onclick="window.location.href='https://www.linkedin.com'">LinkedIn</button><br><br>
-<button id="button10" onclick="window.location.href='https://www.reddit.com'">Reddit</button><br><br>
-<button id="button11" onclick="window.location.href='https://www.nytimes.com'">The New York Times</button><br><br>
-<button id="button12" onclick="window.location.href='https://www.dropbox.com'">Dropbox</button><br><br>
-<button id="button13" onclick="window.location.href='https://www.udemy.com'">Udemy</button><br><br>
-</>
-<button id="button16" onclick="window.location.href='https://www.hotstar.com/in'">hotstar</button><br><br>
-<button id="button17" onclick="window.location.href='https://chat.openai.com/c/45423689-9080-4b1d-9e11-8a8e7be9fd01'">chatgpt</button><br><br>
-<button id="button14" onclick="window.location.href='https://www.ebay.com'">eBay</button><br><br>
-<button id="button15" onclick="window.location.href='https://www.weather.com'">The Weather Channel</button><br><br>
-</body>
+<a href="https://www.google.com" class="button">Google</a>
+<a href="https://www.youtube.com" class="button">YouTube</a>
+<a href="https://www.facebook.com" class="button">Facebook</a>
+<a href="https://twitter.com" class="button">Twitter</a>
+<a href="https://www.amazon.com" class="button">Amazon</a>
+<a href="https://www.wikipedia.org" class="button">Wikipedia</a>
+<a href="https://www.netflix.com" class="button">Netflix</a>
+<a href="https://www.instagram.com" class="button">Instagram</a>
+<a href="https://www.linkedin.com" class="button">LinkedIn</a>
+<a href="https://www.reddit.com" class="button">Reddit</a>
+<a href="https://www.nytimes.com" class="button">The New York Times</a>
+<a href="https://www.dropbox.com" class="button">Dropbox</a>
+<a href="https://www.udemy.com" class="button">Udemy</a>
+<a href="https://www.hotstar.com/in" class="button">Hotstar</a>
+<a href="https://chat.openai.com/c/45423689-9080-4b1d-9e11-8a8e7be9fd01" class="button">ChatGPT</a>
+<a href="https://www.ebay.com" class="button">eBay</a>
+<a href="https://www.weather.com" class="button">The Weather Channel</a>
 
-
-
-<body style="background-color:#FF004C;"></body>
+<a id="back_button" onclick="hm()">Back to Home</a>
 
 <script>
 function hm() {
-      
-      window.location.href = "index.html";
-    }
-
-
+    window.location.href = "index.html";
+}
 </script>
 
-
+</body>
 </html>

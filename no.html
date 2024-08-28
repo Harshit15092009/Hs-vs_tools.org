@@ -5,25 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Word Multiplier</title>
     <style>
-        #word-input {
-            margin-bottom: 10px;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            color: #333;
         }
-        #copy-button {
-            margin-bottom: 10px;
+        .container {
+            margin-top: 50px;
+        }
+        input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
         }
         #output {
             width: 90%;
+            max-width: 800px;
             height: 200px;
-            border: 1px solid #ccc;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin: 20px auto;
             padding: 10px;
             overflow-y: scroll;
+            background-color: white;
+        }
+        #back-button {
+            padding: 10px 20px;
+            background-color: #FF004C;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <input type="text" id="word-input" placeholder="Enter a word">
-    <button id="copy-button">Copy to Clipboard</button>
-    <div id="output"></div>
+    <div class="container">
+        <h1>Word Multiplier</h1>
+        <input type="text" id="word-input" placeholder="Enter a word">
+        <br>
+        <button id="copy-button">Copy to Clipboard</button>
+        <div id="output"></div>
+        <br>
+        <button id="back-button" onclick="hm()">Back</button>
+    </div>
 
     <script>
         document.getElementById('copy-button').addEventListener('click', function() {
@@ -53,26 +96,10 @@
                 outputDiv.innerText = multipliedWord;
             }
         });
-  
-  
-  function hm() {
-      
-      window.location.href = "index.html";
-    }
-  
-  
+
+        function hm() {
+            window.location.href = "index.html";
+        }
     </script>
-  
-  <body style="background-color:#FF004C;"></body>
-
-  <button id=“button1” onclick="hm()">
-back_button
-</button>
-
-
-  
-  
-  
-  
 </body>
-</html>
+            </html>

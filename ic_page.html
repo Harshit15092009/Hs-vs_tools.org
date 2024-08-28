@@ -6,115 +6,129 @@
     <title>Interest Rate Calculator</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background-color: #FAFAFA;
+            color: #333;
+            text-align: center;
+            padding: 20px;
         }
         .container {
             max-width: 500px;
             margin: 0 auto;
             padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            background-color: #FFF;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
-        input[type="number"] {
+        h2 {
+            color: #007ACC;
+            margin-bottom: 20px;
+        }
+        label, select, input {
+            display: block;
             width: 100%;
-            padding: 10px;
             margin-bottom: 10px;
-            box-sizing: border-box;
+            font-size: 16px;
         }
         button {
-            padding: 10px 20px;
-            background-color: #007bff;
+            padding: 15px;
+            width: 100%;
+            font-size: 18px;
+            background-color: #007ACC;
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-right: 10px;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #005999;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        #back_button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #FF004C;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        #back_button:hover {
+            background-color: #CC003F;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Interest Rate Calculator</h2>
-        <label for="type">Select Interest Type:</label>
-        <select id="type">
-            <option value="simple">Simple Interest</option>
-            <option value="compound">Compound Interest</option>
-        </select>
-        <label for="interest">Interest Rate (%):</label>
-        <input type="number" id="interest">
-        <label for="time">Time (months/years):</label>
-        <input type="number" id="time">
-        <label for="amount">Principal Amount:</label>
-        <input type="number" id="amount">
-        <button onclick="calculate()">Calculate</button>
-        <button onclick="addInterest()">Add Interest to Amount</button>
-        <button onclick="saveScreenshot()">Save Screenshot</button>
-        <p id="result"></p>
-        <button onclick="copyResult()">Copy Result</button>
-    </div>
-  
-  <button id=“button1” onclick="hm()">
-back_button
-</button>
 
+<div class="container">
+    <h2>Interest Rate Calculator</h2>
+    <label for="type">Select Interest Type:</label>
+    <select id="type">
+        <option value="simple">Simple Interest</option>
+        <option value="compound">Compound Interest</option>
+    </select>
+    <label for="interest">Interest Rate (%):</label>
+    <input type="number" id="interest">
+    <label for="time">Time (months/years):</label>
+    <input type="number" id="time">
+    <label for="amount">Principal Amount:</label>
+    <input type="number" id="amount">
+    <h6> <button onclick="calculate()">Calculate</button></h6>
+    <h1><button onclick="addInterest()">Add Interest to Amount</button></h1>
+    <h1> <button onclick="saveScreenshot()">Save Screenshot</button></h1>
+    <p id="result"></p>
+    <button onclick="copyResult()">Copy Result</button>
+</div>
 
-  
+<a id="back_button" onclick="hm()">Back to Home</a>
 
-    <script>
-        function calculate() {
-            var type = document.getElementById("type").value;
-            var interestRate = parseFloat(document.getElementById("interest").value);
-            var time = parseFloat(document.getElementById("time").value);
-            var amount = parseFloat(document.getElementById("amount").value);
-            var result = 0;
+<script>
+function calculate() {
+    var type = document.getElementById("type").value;
+    var interestRate = parseFloat(document.getElementById("interest").value);
+    var time = parseFloat(document.getElementById("time").value);
+    var amount = parseFloat(document.getElementById("amount").value);
+    var result = 0;
 
-            if (type === "simple") {
-                result = (amount * interestRate * time) / 100;
-            } else {
-                result = amount * Math.pow((1 + interestRate / 100), time) - amount;
-            }
-
-            document.getElementById("result").innerText = "Interest: " + result.toFixed(2);
-        }
-
-        function addInterest() {
-            var interest = parseFloat(document.getElementById("result").innerText.split(": ")[1]);
-            var amount = parseFloat(document.getElementById("amount").value);
-            document.getElementById("amount").value = (amount + interest).toFixed(2);
-        }
-
-        function copyResult() {
-            var resultText = document.getElementById("result").innerText;
-            navigator.clipboard.writeText(resultText);
-            alert("Result copied to clipboard!");
-        }
-
-        function saveScreenshot() {
-            html2canvas(document.body).then(function(canvas) {
-                var link = document.createElement('a');
-                link.download = 'screenshot.png';
-                link.href = canvas.toDataURL();
-                link.click();
-            });
-        }
-  
-   
-    function hm() {
-      
-      window.location.href = "index.html";
+    if (type === "simple") {
+        result = (amount * interestRate * time) / 100;
+    } else {
+        result = amount * Math.pow((1 + interestRate / 100), time) - amount;
     }
-  
-  
-    </script>
 
+    document.getElementById("result").innerText = "Interest: " + result.toFixed(2);
+}
 
+function addInterest() {
+    var interest = parseFloat(document.getElementById("result").innerText.split(": ")[1]);
+    var amount = parseFloat(document.getElementById("amount").value);
+    document.getElementById("amount").value = (amount + interest).toFixed(2);
+}
 
+function copyResult() {
+    var resultText = document.getElementById("result").innerText;
+    navigator.clipboard.writeText(resultText);
+    alert("Result copied to clipboard!");
+}
 
-<body style="background-color:#FF004C;"></body>
+function saveScreenshot() {
+    html2canvas(document.body).then(function(canvas) {
+        var link = document.createElement('a');
+        link.download = 'screenshot.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+}
 
+function hm() {
+    window.location.href = "index.html";
+}
+</script>
 
 </body>
-</html>
+        </html>
